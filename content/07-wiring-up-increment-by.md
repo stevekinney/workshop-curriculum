@@ -29,7 +29,7 @@ Let's take the easy road and hand `IncrementBy` a reference to `dispatch` for no
 
 In `components/increment-by`, we'll do the following:
 
-```jsx
+```js
 const IncrementBy = ({ amount, dispatch }) => {
   return (
     <section className="flex gap-2 items-center justify-center">

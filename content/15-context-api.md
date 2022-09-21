@@ -26,7 +26,7 @@ By default the `Provider` will pass it's value down any child components. This i
 
 We can move all of our functionality in here as well:
 
-```jsx
+```js
 const ItemsProvider = ({ children }) => {
   const [items, setItems] = useState([
     { id: 1, name: 'iPod', packed: false },
@@ -80,7 +80,7 @@ Notice how we're hiding stuff that isn't directly used (e.g. `items`, `setItems`
 
 We can now wrap it around our component in `index.js`:
 
-```jsx
+```js
 root.render(
   <React.StrictMode>
     <ItemsProvider>
@@ -94,7 +94,7 @@ root.render(
 
 `application.jsx` now can pull in just what it needs:
 
-```jsx
+```js
 import { createContext, useContext, useState } from 'react';
 import AddNewItem from './components/add-new-item';
 import { ItemsContext } from './components/context';
@@ -123,7 +123,7 @@ export default Application;
 
 We can remove passing down the functions in `items.jsx` all together:
 
-```jsx
+```js
 export default ({ title, items = [] }) => {
   const [filter, setFilter] = useState('');
 
@@ -157,7 +157,7 @@ export default ({ title, items = [] }) => {
 
 `item.jsx` is similarly simplified:
 
-```jsx
+```js
 import { useContext } from 'react';
 import { ItemsContext } from './context';
 
@@ -183,7 +183,7 @@ export default ({ name, packed, id }) => {
 
 As is `add-new-items.jsx`:
 
-```jsx
+```js
 export default ({ onSubmit: handleSubmit }) => {
   const [value, setValue] = useState('');
   const { addItem } = useContext(ItemsContext);

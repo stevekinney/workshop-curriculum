@@ -32,7 +32,7 @@ Some quick notes:
 
 The first step is to swap out that hard-coded `count` with some state.
 
-```jsx
+```js
 const [count, setCount] = useState(0);
 ```
 
@@ -42,7 +42,7 @@ Now, theoretically, we've updated the component to use `count` as a value we're 
 
 We can update them as follows:
 
-```jsx
+```js
 <button className="w-full" onClick={() => setCount(count - 1)}>
   Decrement
 </button>

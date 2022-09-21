@@ -54,7 +54,7 @@ const Event = ({
   href: string;
 }) => (
   <Link href={href}>
-    <a className="hover:bg-cyan-50 p-4">
+    <a className="group block bg-cyan-50 p-4 border-2 border-cyan-700 hover:bg-cyan-100 hover:shadow-md transition-all">
       <article>
         <h3 className="font-semibold text-cyan-600">{title}</h3>
         <p className="text-slate-500">{date}</p>
@@ -64,11 +64,13 @@ const Event = ({
 );
 
 const Sidebar = ({ className }: WithClassName) => (
-  <section className={clsx('flex flex-col gap-4', className)}>
-    <h2 className="text-2xl font-bold px-4">Workshops</h2>
-    {events.map((event) => (
-      <Event key={event.href} {...event} />
-    ))}
+  <section className={clsx(className)}>
+    <h2 className="text-2xl font-bold mb-4">Workshops</h2>
+    <div className="grid grid-cols-1 md:grid md:grid-cols-4 md:grid-flow-row lg:grid-cols-1 gap-4">
+      {events.map((event) => (
+        <Event key={event.href} {...event} />
+      ))}
+    </div>
   </section>
 );
 

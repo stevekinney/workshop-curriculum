@@ -6,7 +6,7 @@ order: 9
 
 Your solution might look something like this:
 
-```jsx
+```js
 import { useState } from 'react';
 
 const SetToValue = ({ dispatch }) => {

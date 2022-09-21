@@ -24,7 +24,7 @@ What would this look like if we did it solely using `useState` and `useEffect`. 
 
 For starters, we might end up with something like this monstrousity:
 
-```jsx
+```js
 const [isValid, setIsValid] = useState(false);
 const [firstName, setFirstName] = useState('');
 const [lastName, setLastName] = useState('');
@@ -151,7 +151,7 @@ const handleClear = (e) => {
 
 And then we switch the `onChange` handlers as follows:
 
-```jsx
+```js
 <FormInput
   label="First Name"
   id="firstName"

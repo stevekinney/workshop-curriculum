@@ -19,7 +19,7 @@ const reducer = (state = 0, action) => {
 
 And then in your component:
 
-```jsx
+```js
 <button className="w-full" onClick={() => dispatch('DECREMENT')}>
           Decrement
 </button>

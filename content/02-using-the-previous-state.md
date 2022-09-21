@@ -19,7 +19,7 @@ You could easily test these somewhere.
 
 Your first instinct, might be to do something like this:
 
-```jsx
+```js
 <button className="w-full" onClick={() => setCount(decrement(count))}>
   Decrement
 </button>
@@ -29,7 +29,7 @@ And, that'll work. But, it's even simpler than that. The updater function that c
 
 This means that all of the following are the same:
 
-```jsx
+```js
 setCount(count + 1);
 setCount((n) => n + 1);
 setCount(increment);
@@ -37,7 +37,7 @@ setCount(increment);
 
 We can update our component as follows:
 
-```jsx
+```js
 <button className="w-full" onClick={() => setCount(decrement)}>
   Decrement
 </button>

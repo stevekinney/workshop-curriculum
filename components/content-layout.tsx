@@ -1,34 +1,45 @@
 import Link from 'next/link';
 import Sidebar from './sidebar';
 
-const ContentLayout = ({
-  children,
-  contents,
-}: WithChildren & { contents: MarkdownDocument[] }) => {
+const TableOfContents = ({ contents }: { contents: MarkdownDocument[] }) => {
   return (
-    <div className="flex gap-4 m-8">
-      <nav className="flex flex-col w-72 gap-4">
-        <h3 className="font-bold text-2xl">React Hooks</h3>
-        <Link href="https://forms.gle/dL5vLPaXMT7S1xHB7">
-          <a className="block border-2 bg-yellow-100 border-yellow-300 p-4 text-center">
-            Give me your feedback here!
-          </a>
-        </Link>
-        <ol className="list-decimal pl-4">
+    <nav className="rounded-md overflow-hidden border-2 border-slate-200 bg-slate-200 w-full lg:w-72 lg:min-h-fit shadow-md mb-8">
+      <input type="checkbox" className="peer hidden" id="table-of-contents" />
+      <label
+        className="flex p-4 place-content-between items-center peer-checked:after:content-['⬇️'] after:content-['⬆️'] sm:after:content-[''] sm:peer-checked:after:content-['']"
+        htmlFor="table-of-contents"
+      >
+        <h2 className="font-semibold text-2xl">React Hooks</h2>
+      </label>
+      <div className="sm:px-4 max-h-0 sm:max-h-fit peer-checked:max-h-fit bg-slate-50 text-slate-800">
+        <ol className="list-decimal pl-12 md:pl-8 py-4">
           {contents.map((document: MarkdownDocument) => (
-            <li key={document.slug} className="mb-2">
+            <li key={document.slug}>
               <Link href={`/react-hooks/${document.slug}`} key={document.slug}>
                 <a className="text-cyan-600">{document.meta.title}</a>
               </Link>
             </li>
           ))}
         </ol>
-      </nav>
-      <section className="flex-grow">
-        <div className="prose mx-auto">{children}</div>
-      </section>
-      <Sidebar className="w-80" />
-    </div>
+      </div>
+    </nav>
+  );
+};
+
+const ContentLayout = ({
+  children,
+  contents,
+}: WithChildren & { contents: MarkdownDocument[] }) => {
+  return (
+    <section className="p-8">
+      <div className="lg:flex lg:flex-row gap-8 items-start lg:place-content-around">
+        <TableOfContents contents={contents} />
+        <section>
+          <div className="prose mx-auto">{children}</div>
+        </section>
+        <Sidebar className="lg:w-60" />
+      </div>
+    </section>
   );
 };
 

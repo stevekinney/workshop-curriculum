@@ -1,7 +1,7 @@
 ---
 title: Solution, Resetting the Increment Amount
 repostiory: https://github.com/stevekinney/react-hooks-counter
-order: 0
+order: 8
 ---
 
 You basically have two options here.
