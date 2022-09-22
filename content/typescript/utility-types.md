@@ -223,30 +223,3 @@ const Input = (props: <Props & React.HTMLProps<HTMLInputElement>) => {
 
 <Input about={...} accept={...} alt={...} ... />
 ```
-
-### `React.ComponentProps<typeof XXX>`
-
-We'll use this one in the very next exercise—just sayin'.
-
-```ts
-type MyComponentProps = React.ComponentProps<typeof MyComponent>;
-```
-
-### Generic List Component
-
-```ts
-import * as React from 'react';
-
-export interface GenericListProps<T> {
-  items: T[];
-  itemRenderer: (item: T) => JSX.Element;
-}
-
-export class GenericList<T> extends React.Component<GenericListProps<T>, {}> {
-  render() {
-    const { items, itemRenderer } = this.props;
-
-    return <div>{items.map(itemRenderer)}</div>;
-  }
-}
-```
