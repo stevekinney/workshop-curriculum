@@ -2,7 +2,7 @@
 title: 'Exercise: Generics'
 ---
 
-## Your Mission
+Here a link to the [TS Playground](https://www.typescriptlang.org/play?) in case you need a place to play.
 
 This will be quick, but we'll build a little break into it.
 

@@ -2,13 +2,6 @@
 title: Utility Types (Solution)
 ---
 
-<iframe src="https://codesandbox.io/embed/fun-with-utility-types-solution-x0i28?fontsize=14&hidenavigation=1&module=%2Fsrc%2FApplication.tsx&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="fun-with-utility-types-solution"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
-
 You can find the solution [here](https://codesandbox.io/s/fun-with-utility-types-solution-x0i28?file=/src/Application.tsx).
 
 ## Solution

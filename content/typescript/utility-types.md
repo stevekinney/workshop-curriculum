@@ -4,6 +4,8 @@ title: Utility Types
 
 ## `keyof`
 
+We saw this one in a previous example.
+
 ```ts
 type ObjectLiteralType = {
   first: 1;

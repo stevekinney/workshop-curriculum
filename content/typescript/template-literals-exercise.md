@@ -1,8 +1,6 @@
 ---
-title: Template Literals Exercise
+title: Template Literals (Exercise)
 ---
-
-## Your Turn
 
 Visit [this sandbox](https://www.typescriptlang.org/play?jsx=1&ssl=30&ssc=1&pln=31&pc=1#code/C4TwDgpgBAahBOwCWBjAhgGwIIaQcwDsBbCA4KAXigHJgB7MaqAHxpVOASdeoCM7g9ItQDcAKFCQoACTrwkALzoFMOfMQ6UaGCADNg3Nhy4sa8vAAsD4ieGgAhOgA8tAbzFQoTgFxQCAVyJeBHFPEF8AoJCPKEx1EjJfAGdgeQI8ESgAeiyoABkIAySoIjQAa2hgCyRi4MEEADoxAF8bFGUU2N9HFyp3Tx8oAEYABgAaGPDh8Zi4wgTgX1oGAFp2Mi4J1rExdoJO3m7nNxjBgCYZsN8Lic85jUSafkE6IhXzK2otto7yJIs6P4MAATezwCDlI69KD9LzXS5QKY3Wa4eYcJY6fTvfCfb47Padf6AkFgiFlLDAABiSHgKXs-mAAFEAG4cfyYDAgADqcjKUJOA18owRU2Ft1iqIeiyMG3gXxaIiAA).
 
