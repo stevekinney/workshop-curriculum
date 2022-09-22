@@ -1,18 +1,28 @@
-import clsx from "clsx";
-import Link from "next/link";
-import formatTitle from "../lib/format-title";
-import Sidebar from "./sidebar";
+import clsx from 'clsx';
+import Link from 'next/link';
+import formatTitle from '../lib/format-title';
+import Sidebar from './sidebar';
+
+type TableOfContentsProps = WithClassName & {
+  workshop?: string;
+  contents: MarkdownDocument[];
+};
+
+type ContentLayoutProps = WithChildren & {
+  workshop: string;
+  contents: MarkdownDocument[];
+};
 
 const TableOfContents = ({
-  workshop = "Contents",
+  workshop = 'Contents',
   contents,
   className,
-}: WithClassName & { workshop?: string; contents: MarkdownDocument[] }) => {
+}: TableOfContentsProps) => {
   return (
     <nav
       className={clsx(
-        "mb-8 w-full overflow-hidden rounded-md border-2 border-slate-200 bg-slate-200 shadow-md lg:min-h-fit lg:w-72",
-        className
+        'mb-8 overflow-hidden rounded-md border-2 border-purple-300 bg-purple-200 shadow-md',
+        className,
       )}
     >
       <input type="checkbox" className="peer hidden" id="table-of-contents" />
@@ -22,12 +32,12 @@ const TableOfContents = ({
       >
         <h2 className="text-2xl font-semibold">{formatTitle(workshop)}</h2>
       </label>
-      <div className="max-h-0 bg-slate-50 text-slate-800 peer-checked:max-h-fit sm:max-h-fit sm:px-4">
+      <div className="max-h-0 bg-purple-50 text-purple-400 peer-checked:max-h-fit sm:max-h-fit sm:px-4">
         <ol className="list-decimal py-4 pl-12 md:pl-8">
           {contents.map((document: MarkdownDocument) => (
             <li key={document.slug}>
               <Link href={`/${workshop}/${document.slug}`} key={document.slug}>
-                <a className="text-cyan-600 transition-colors hover:text-cyan-500 hover:underline">
+                <a className="text-purple-900 transition-colors hover:text-purple-700 hover:underline">
                   {document.meta.title}
                 </a>
               </Link>
@@ -43,15 +53,19 @@ const ContentLayout = ({
   children,
   contents,
   workshop,
-}: WithChildren & { workshop: string; contents: MarkdownDocument[] }) => {
+}: ContentLayoutProps) => {
   return (
     <section className="p-8">
       <div className="items-start gap-8 lg:flex lg:flex-row lg:place-content-around">
-        <TableOfContents workshop={workshop} contents={contents} />
-        <section className="lg:w-8/12">
+        <TableOfContents
+          workshop={workshop}
+          contents={contents}
+          className="w-full lg:w-3/12"
+        />
+        <section className="lg:w-7/12">
           <div className="prose mx-auto">{children}</div>
         </section>
-        <Sidebar className="lg:w-60" />
+        <Sidebar className="lg:w-2/12" />
       </div>
     </section>
   );

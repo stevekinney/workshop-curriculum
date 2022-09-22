@@ -1,18 +1,19 @@
-import clsx from "clsx";
-import Link from "next/link";
+import clsx from 'clsx';
+import Link from 'next/link';
+import WithLink from './with-link';
 
 const Header = ({ className }: WithClassName) => (
   <header
     className={clsx(
-      "bg-slate-50 p-4 text-center md:p-8 md:text-left",
-      className
+      'bg-slate-50 p-4 text-center md:p-8 md:text-left',
+      className,
     )}
   >
-    <Link href="/react-hooks/01-getting-started">
-      <a className="border-b-4 border-slate-600 hover:border-cyan-300">
-        <h1 className="text-3xl font-bold">Steve's Workshops</h1>
-      </a>
-    </Link>
+    <WithLink href="/">
+      <h1 className="w-fit border-b-4 border-purple-500 text-3xl font-light transition-all hover:border-purple-300">
+        Steve's Workshops
+      </h1>
+    </WithLink>
   </header>
 );
 
