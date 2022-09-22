@@ -13,7 +13,7 @@ type ContentLayoutProps = WithChildren & {
   contents: MarkdownDocument[];
 };
 
-const TableOfContents = ({
+export const TableOfContents = ({
   workshop = 'Contents',
   contents,
   className,

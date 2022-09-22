@@ -1,8 +1,17 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { TableOfContents } from '../../components/content-layout';
 
-import { getDirectories, getDocuments } from "../../lib/documents";
+import { getDirectories, getDocuments } from '../../lib/documents';
 
-export default () => null;
+export default ({
+  workshop,
+  contents,
+}: {
+  workshop: string;
+  contents: MarkdownDocument[];
+}) => {
+  return <TableOfContents contents={contents} workshop={workshop} />;
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const directories = await getDirectories();
@@ -20,14 +29,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const directory = context.params?.workshop as string;
-  const documents = await getDocuments(directory);
-  const [first] = documents;
+  const workshop = context.params?.workshop as string;
+  const contents = await getDocuments(workshop);
 
   return {
-    redirect: {
-      destination: `/${directory}/${first.slug}`,
-      permanent: true,
+    props: {
+      workshop,
+      contents,
     },
   };
 };
