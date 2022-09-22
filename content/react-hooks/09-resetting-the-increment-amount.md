@@ -9,7 +9,7 @@ You basically have two options here.
 You could reset both:
 
 ```js
-if (action.type === 'RESET') {
+if (action.type === "RESET") {
   return { ...state, count: 0, incrementBy: 1 };
 }
 ```
@@ -17,7 +17,7 @@ if (action.type === 'RESET') {
 Or you could just use that handy `defaultState` object we had:
 
 ```js
-if (action.type === 'RESET') {
+if (action.type === "RESET") {
   return defaultState;
 }
 ```

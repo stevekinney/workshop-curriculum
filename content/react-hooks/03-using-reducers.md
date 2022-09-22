@@ -16,7 +16,7 @@ There are technically no rules, but the civilized among us tend to structure the
 
 ```js
 const action = {
-  type: 'INCREMENT', // The name of the thing that happened.
+  type: "INCREMENT", // The name of the thing that happened.
   payload: 2, // Anything else we need to know to do our jobs.
 };
 ```
@@ -27,7 +27,7 @@ And then your reducer, might look something like this:
 
 ```js
 const reducer = (state, action) => {
-  if (action.type === 'INCREMENT') {
+  if (action.type === "INCREMENT") {
     return state + action.payload;
   }
 

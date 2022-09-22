@@ -7,7 +7,7 @@ order: 9
 Your solution might look something like this:
 
 ```js
-import { useState } from 'react';
+import { useState } from "react";
 
 const SetToValue = ({ dispatch }) => {
   const [newCount, setNewCount] = useState(0);
@@ -17,13 +17,13 @@ const SetToValue = ({ dispatch }) => {
       onSubmit={(e) => {
         e.preventDefault();
         dispatch({
-          type: 'SET_COUNT',
+          type: "SET_COUNT",
           payload: newCount,
         });
       }}
       className="flex flex-col gap-2"
     >
-      <div className="flex gap-2 items-center justify-center">
+      <div className="flex items-center justify-center gap-2">
         <label htmlFor="set-count" className="whitespace-nowrap">
           Set To
         </label>

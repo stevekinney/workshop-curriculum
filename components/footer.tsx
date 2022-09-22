@@ -1,5 +1,5 @@
-import clsx from 'clsx';
-import Link from 'next/link';
+import clsx from "clsx";
+import Link from "next/link";
 
 const FooterLink = ({
   href,
@@ -9,7 +9,7 @@ const FooterLink = ({
   <Link href={href}>
     <a className="underline underline-offset-2">
       <span className="hidden sm:inline">
-        <strong>{username}</strong> on{' '}
+        <strong>{username}</strong> on{" "}
       </span>
       <span className="font-semibold sm:font-normal">{site}</span>
     </a>
@@ -19,8 +19,8 @@ const FooterLink = ({
 const Footer = ({ className }: WithClassName) => (
   <footer
     className={clsx(
-      'bg-slate-900 text-white sticky p-4 flex place-content-center gap-4',
-      className,
+      "sticky flex place-content-center gap-4 bg-slate-900 p-4 text-white",
+      className
     )}
   >
     <FooterLink

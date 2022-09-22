@@ -1,11 +1,11 @@
-import { MDXProvider } from '@mdx-js/react';
-import type { AppProps } from 'next/app';
+import { MDXProvider } from "@mdx-js/react";
+import type { AppProps } from "next/app";
 
-import Layout from '../components/layout';
+import Layout from "../components/layout";
 
-import '../styles/global.css';
-import '../public/prism.css';
-import '../public/prism.js';
+import "../styles/global.css";
+import "../public/prism.css";
+import "../public/prism.js";
 
 const components = {};
 

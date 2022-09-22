@@ -10,9 +10,9 @@ There are a bunch of ways that we could do this, but let's start dumbly-simple.
 
 ```js
 const reducer = (state = 0, action) => {
-  if (action === 'INCREMENT') return increment(state);
-  if (action === 'DECREMENT') return decrement(state);
-  if (action === 'RESET') return 0;
+  if (action === "INCREMENT") return increment(state);
+  if (action === "DECREMENT") return decrement(state);
+  if (action === "RESET") return 0;
   return state;
 };
 ```

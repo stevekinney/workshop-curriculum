@@ -7,7 +7,7 @@ order: 6
 We can add thhe following logic to our reducer:
 
 ```js
-if (action.type === 'SET_INCREMENT_AMOUNT') {
+if (action.type === "SET_INCREMENT_AMOUNT") {
   return { ...state, incrementAmount: Number(action.payload) };
 }
 ```
@@ -16,7 +16,7 @@ And it'll definitely do the trick if we send it an action that looks something l
 
 ```js
 dispatch({
-  type: 'SET_INCREMENT_AMOUNT',
+  type: "SET_INCREMENT_AMOUNT",
   payload: 5,
 });
 ```
@@ -32,7 +32,7 @@ In `components/increment-by`, we'll do the following:
 ```js
 const IncrementBy = ({ amount, dispatch }) => {
   return (
-    <section className="flex gap-2 items-center justify-center">
+    <section className="flex items-center justify-center gap-2">
       <label className="whitespace-nowrap" htmlFor="increment-by">
         Increment By
       </label>
@@ -45,7 +45,7 @@ const IncrementBy = ({ amount, dispatch }) => {
         onChange={(event) => {
           /* 👀 LOOK HERE 👀 */
           dispatch({
-            type: 'SET_INCREMENT_AMOUNT',
+            type: "SET_INCREMENT_AMOUNT",
             payload: event.target.value,
           });
         }}

@@ -26,10 +26,10 @@ For starters, we might end up with something like this monstrousity:
 
 ```js
 const [isValid, setIsValid] = useState(false);
-const [firstName, setFirstName] = useState('');
-const [lastName, setLastName] = useState('');
-const [password, setPassword] = useState('');
-const [confirmPassword, setConfirmPassword] = useState('');
+const [firstName, setFirstName] = useState("");
+const [lastName, setLastName] = useState("");
+const [password, setPassword] = useState("");
+const [confirmPassword, setConfirmPassword] = useState("");
 const [errors, setErrors] = useState([]);
 const [submitted, setSubmitted] = useState(false);
 
@@ -37,13 +37,13 @@ const [submitted, setSubmitted] = useState(false);
 useEffect(() => {
   const errors = [];
 
-  if (!firstName) errors.push('You must provide a first name.');
-  if (!lastName) errors.push('You must provide a last name.');
-  if (!password) errors.push('You must provide a password.');
+  if (!firstName) errors.push("You must provide a first name.");
+  if (!lastName) errors.push("You must provide a last name.");
+  if (!password) errors.push("You must provide a password.");
   if (!confirmPassword)
-    errors.push('You must provide a password confirmation.');
+    errors.push("You must provide a password confirmation.");
   if (password && confirmPassword && password !== confirmPassword) {
-    errors.push('Password and confirmation do not match');
+    errors.push("Password and confirmation do not match");
   }
 
   setErrors(errors);
@@ -58,10 +58,10 @@ const handleSubmit = (e) => {
 const handleClear = (e) => {
   e.preventDefault();
 
-  setFirstName('');
-  setLastName('');
-  setPassword('');
-  setConfirmPassword('');
+  setFirstName("");
+  setLastName("");
+  setPassword("");
+  setConfirmPassword("");
   setSubmitted(false);
   setErrors([]);
 };
@@ -75,10 +75,10 @@ Let's start off with the shape of our state.
 
 ```js
 const defaultState = {
-  firstName: '',
-  lastName: '',
-  password: '',
-  confirmPassword: '',
+  firstName: "",
+  lastName: "",
+  password: "",
+  confirmPassword: "",
   submitted: false,
 };
 ```
@@ -97,21 +97,21 @@ Everything else basically stems from those these actions. I was clever in-so-far
 
 ```js
 const reducer = (state, action) => {
-  if (action.type === 'UPDATE_FIELD') {
+  if (action.type === "UPDATE_FIELD") {
     return {
       ...state,
       [action.payload.key]: action.payload.value,
     };
   }
 
-  if (action.type === 'SUBMIT_FORM') {
+  if (action.type === "SUBMIT_FORM") {
     return {
       ...state,
       submitted: true,
     };
   }
 
-  if (action.type === 'CLEAR_FORM') {
+  if (action.type === "CLEAR_FORM") {
     return defaultState;
   }
 
@@ -130,7 +130,7 @@ const isValid = false; // TO BE IMPLEMENTED
 
 const updateField = (event) => {
   dispatch({
-    type: 'UPDATE_FIELD',
+    type: "UPDATE_FIELD",
     payload: {
       key: event.target.name,
       value: event.target.value,
@@ -140,12 +140,12 @@ const updateField = (event) => {
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  dispatch({ type: 'SUBMIT_FORM' });
+  dispatch({ type: "SUBMIT_FORM" });
 };
 
 const handleClear = (e) => {
   e.preventDefault();
-  dispatch({ type: 'CLEAR_FORM' });
+  dispatch({ type: "CLEAR_FORM" });
 };
 ```
 
@@ -168,12 +168,12 @@ Now we need to deal with the errors and validity. Let's start with the simplest 
 ```js
 const errors = [];
 
-if (!firstName) errors.push('You must provide a first name.');
-if (!lastName) errors.push('You must provide a last name.');
-if (!password) errors.push('You must provide a password.');
-if (!confirmPassword) errors.push('You must provide a password confirmation.');
+if (!firstName) errors.push("You must provide a first name.");
+if (!lastName) errors.push("You must provide a last name.");
+if (!password) errors.push("You must provide a password.");
+if (!confirmPassword) errors.push("You must provide a password confirmation.");
 if (password && confirmPassword && password !== confirmPassword) {
-  errors.push('Password and confirmation do not match');
+  errors.push("Password and confirmation do not match");
 }
 
 const isValid = !errors.length;
@@ -195,17 +195,17 @@ We can simplify this a bit by pulling out the error logic.
 const checkForErrors = (state) => {
   const errors = [];
 
-  if (!state.firstName) errors.push('You must provide a first name.');
-  if (!state.lastName) errors.push('You must provide a last name.');
-  if (!state.password) errors.push('You must provide a password.');
+  if (!state.firstName) errors.push("You must provide a first name.");
+  if (!state.lastName) errors.push("You must provide a last name.");
+  if (!state.password) errors.push("You must provide a password.");
   if (!state.confirmPassword)
-    errors.push('You must provide a password confirmation.');
+    errors.push("You must provide a password confirmation.");
   if (
     state.password &&
     state.confirmPassword &&
     state.password !== state.confirmPassword
   ) {
-    errors.push('Password and confirmation do not match');
+    errors.push("Password and confirmation do not match");
   }
 
   return errors;
@@ -225,7 +225,7 @@ const showErrors = submitted && (!edited || !isValid);
 
 const updateField = (event) => {
   dispatch({
-    type: 'UPDATE_FIELD',
+    type: "UPDATE_FIELD",
     payload: {
       key: event.target.name,
       value: event.target.value,
@@ -235,11 +235,11 @@ const updateField = (event) => {
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  dispatch({ type: 'SUBMIT_FORM' });
+  dispatch({ type: "SUBMIT_FORM" });
 };
 
 const handleClear = (e) => {
   e.preventDefault();
-  dispatch({ type: 'CLEAR_FORM' });
+  dispatch({ type: "CLEAR_FORM" });
 };
 ```

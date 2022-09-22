@@ -1,19 +1,25 @@
-import { readFile, readdir } from 'fs/promises';
-import { join } from 'path';
-import matter from 'gray-matter';
+import { readFile, readdir } from "fs/promises";
+import { join } from "path";
+import matter from "gray-matter";
 
-const directory = join(process.cwd(), 'content');
+const contentDirectory = join(process.cwd(), "content");
 
-export const getDocuments = async () => {
-  const fullPath = join(directory);
+export const getDirectories = async () => {
+  const directories = await readdir(contentDirectory);
+  return directories;
+};
+
+export const getDocuments = async (directory: string) => {
+  const fullPath = join(contentDirectory, directory);
+
   return await readdir(fullPath).then(async (files) => {
     const documents = await Promise.all(
       files
-        .filter((file) => file.endsWith('md'))
+        .filter((file) => file.endsWith("md"))
         .map(
           async (file): Promise<MarkdownDocument> =>
-            await getDocumentBySlug(file, fullPath),
-        ),
+            await getDocumentBySlug(directory, file)
+        )
     );
 
     return documents.sort((first, second) => {
@@ -23,12 +29,12 @@ export const getDocuments = async () => {
 };
 
 export async function getDocumentBySlug(
-  slug: string,
-  dir: string = directory,
+  directory: string,
+  slug: string
 ): Promise<MarkdownDocument> {
-  const fullPath = join(dir, slug);
-  const fileContents = await readFile(fullPath, 'utf8');
+  const fullPath = join(contentDirectory, directory, slug);
+  const fileContents = await readFile(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  return { slug: slug.replace('.md', ''), meta: data, content };
+  return { slug: slug.replace(".md", ""), meta: data, content };
 }

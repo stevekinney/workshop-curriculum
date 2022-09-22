@@ -26,15 +26,15 @@ And then we could update our reducer accordingly:
 
 ```js
 const reducer = (state = defaultState, action) => {
-  if (action.type === 'INCREMENT') {
+  if (action.type === "INCREMENT") {
     return { ...state, count: state.count + state.incrementAmount };
   }
 
-  if (action.type === 'DECREMENT') {
+  if (action.type === "DECREMENT") {
     return { ...state, count: state.count - state.incrementAmount };
   }
 
-  if (action.type === 'RESET') {
+  if (action.type === "RESET") {
     return { ...state, count: 0 };
   }
 

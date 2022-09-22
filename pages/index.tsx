@@ -1,17 +1,45 @@
-import Head from 'next/head';
-import Link from 'next/link';
+import type { GetStaticProps } from "next";
+import Head from "next/head";
+import Link from "next/link";
+import Sidebar from "../components/sidebar";
 
-export default function Home() {
+import { getDirectories } from "../lib/documents";
+import formatTitle from "../lib/format-title";
+
+export default function Home({ workshops }: { workshops: string[] }) {
   return (
-    <div className="container">
+    <div className="m-8">
       <Head>
-        <title>Steve's Workshops: Home</title>
+        <title>Steve's Workshops</title>
       </Head>
 
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <Link href="/react-hooks">
-        <a>React Hooks</a>
-      </Link>
+      <section className="flex flex-col gap-8">
+        <h2 className="mb-4 text-2xl font-bold">Workshop Curricula</h2>
+        <section className="grid grid-cols-1 gap-4 md:grid md:grid-flow-row md:grid-cols-4 lg:grid-cols-1">
+          {workshops.map((workshop) => {
+            return (
+              <Link href={`/${workshop}`}>
+                <a className="group block border-2 border-slate-700 bg-slate-50 p-4 transition-all hover:bg-cyan-100 hover:shadow-md">
+                  <article>
+                    <h3 className="font-semibold text-slate-600">
+                      {formatTitle(workshop)}
+                    </h3>
+                  </article>
+                </a>
+              </Link>
+            );
+          })}
+        </section>
+        <Sidebar />
+      </section>
     </div>
   );
 }
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const workshops = await getDirectories();
+
+  return {
+    props: { workshops },
+  };
+};

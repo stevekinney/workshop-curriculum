@@ -29,10 +29,10 @@ We can move all of our functionality in here as well:
 ```js
 const ItemsProvider = ({ children }) => {
   const [items, setItems] = useState([
-    { id: 1, name: 'iPod', packed: false },
-    { id: 2, name: 'MacBook', packed: true },
-    { id: 3, name: 'Paper Map', packed: false },
-    { id: 4, name: 'Socks', packed: false },
+    { id: 1, name: "iPod", packed: false },
+    { id: 2, name: "MacBook", packed: true },
+    { id: 3, name: "Paper Map", packed: false },
+    { id: 4, name: "Socks", packed: false },
   ]);
 
   const packedItems = items.filter((item) => {
@@ -56,7 +56,7 @@ const ItemsProvider = ({ children }) => {
       items.map((item) => {
         if (item.id !== id) return item;
         return { ...item, packed: !item.packed };
-      }),
+      })
     );
   };
 
@@ -86,7 +86,7 @@ root.render(
     <ItemsProvider>
       <Application />
     </ItemsProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 ```
 
@@ -95,23 +95,23 @@ root.render(
 `application.jsx` now can pull in just what it needs:
 
 ```js
-import { createContext, useContext, useState } from 'react';
-import AddNewItem from './components/add-new-item';
-import { ItemsContext } from './components/context';
-import Items from './components/items';
+import { createContext, useContext, useState } from "react";
+import AddNewItem from "./components/add-new-item";
+import { ItemsContext } from "./components/context";
+import Items from "./components/items";
 
 export const Application = () => {
   const { packedItems, unpackedItems } = useContext(ItemsContext);
 
   return (
-    <main className="flex flex-col mx-8 md:mx-auto my-8 gap-8 w-full lg:max-w-4xl items-start">
-      <section className="border-8 border-pink-300 p-4 flex flex-col gap-8 shadow-pink-800 shadow-lg bg-white w-full">
+    <main className="mx-8 my-8 flex w-full flex-col items-start gap-8 md:mx-auto lg:max-w-4xl">
+      <section className="flex w-full flex-col gap-8 border-8 border-pink-300 bg-white p-4 shadow-lg shadow-pink-800">
         <AddNewItem />
       </section>
-      <section className="border-8 border-pink-300 p-4 flex flex-col gap-8 shadow-pink-800 shadow-lg bg-white w-full">
+      <section className="flex w-full flex-col gap-8 border-8 border-pink-300 bg-white p-4 shadow-lg shadow-pink-800">
         <Items items={unpackedItems} title="Unpacked Items" />
       </section>
-      <section className="border-8 border-pink-300 p-4 flex flex-col gap-8 shadow-pink-800 shadow-lg bg-white w-full">
+      <section className="flex w-full flex-col gap-8 border-8 border-pink-300 bg-white p-4 shadow-lg shadow-pink-800">
         <Items items={packedItems} title="Packed Items" />
       </section>
     </main>
@@ -125,15 +125,15 @@ We can remove passing down the functions in `items.jsx` all together:
 
 ```js
 export default ({ title, items = [] }) => {
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState("");
 
   const visibleItems = items.filter((item) =>
-    item.name.toLowerCase().startsWith(filter.toLowerCase()),
+    item.name.toLowerCase().startsWith(filter.toLowerCase())
   );
 
   return (
     <section className="flex flex-col gap-4">
-      <div className="flex gap-4 items-center">
+      <div className="flex items-center gap-4">
         <input
           id="add-new-item"
           className="w-full"
@@ -144,7 +144,7 @@ export default ({ title, items = [] }) => {
         />
       </div>
 
-      <h2 className="font-bold text-2xl">{title}</h2>
+      <h2 className="text-2xl font-bold">{title}</h2>
       <ul>
         {visibleItems.map((item) => (
           <Item key={item.id} {...item} />
@@ -158,14 +158,14 @@ export default ({ title, items = [] }) => {
 `item.jsx` is similarly simplified:
 
 ```js
-import { useContext } from 'react';
-import { ItemsContext } from './context';
+import { useContext } from "react";
+import { ItemsContext } from "./context";
 
 export default ({ name, packed, id }) => {
   const { toggleItem, removeItem } = useContext(ItemsContext);
 
   return (
-    <li className="flex items-center gap-2 mb-2">
+    <li className="mb-2 flex items-center gap-2">
       <input
         type="checkbox"
         checked={packed}
@@ -185,7 +185,7 @@ As is `add-new-items.jsx`:
 
 ```js
 export default ({ onSubmit: handleSubmit }) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const { addItem } = useContext(ItemsContext);
 
   return (
@@ -196,7 +196,7 @@ export default ({ onSubmit: handleSubmit }) => {
       }}
       className="flex flex-col gap-8"
     >
-      <div className="flex gap-4 items-center">
+      <div className="flex items-center gap-4">
         <label htmlFor="add-new-item" className="whitespace-nowrap">
           Add New Item
         </label>
@@ -215,7 +215,7 @@ export default ({ onSubmit: handleSubmit }) => {
         </button>
         <button
           className="secondary w-full"
-          onClick={() => setValue('')}
+          onClick={() => setValue("")}
           disabled={!value}
         >
           Clear

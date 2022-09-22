@@ -31,15 +31,15 @@ const defaultState = {
 };
 
 const reducer = (state = defaultState, action) => {
-  if (action === 'INCREMENT') {
+  if (action === "INCREMENT") {
     return { ...state, count: state.count + state.incrementAmount };
   }
 
-  if (action === 'DECREMENT') {
+  if (action === "DECREMENT") {
     return { ...state, count: state.count - state.incrementAmount };
   }
 
-  if (action === 'RESET') {
+  if (action === "RESET") {
     return { ...state, count: 0 };
   }
 
@@ -49,11 +49,11 @@ const reducer = (state = defaultState, action) => {
 export const Application = () => {
   const [{ count, incrementAmount }, dispatch] = useReducer(
     reducer,
-    defaultState,
+    defaultState
   );
 
   return (
-    <main className="m-auto mx-8 my-8 border-8 border-pink-300 p-4 flex flex-col gap-4">
+    <main className="m-auto mx-8 my-8 flex flex-col gap-4 border-8 border-pink-300 p-4">
       {/* Omitted for brevity… */}
       <IncrementBy amount={incrementAmount} />
       <SetToValue />

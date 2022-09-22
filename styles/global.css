@@ -8,6 +8,6 @@ body,
   @apply box-border;
 }
 
-html {
-  width: 100%;
+body {
+  @apply min-h-screen;
 }
