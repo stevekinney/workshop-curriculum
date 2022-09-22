@@ -10,7 +10,11 @@ export default ({
   workshop: string;
   contents: MarkdownDocument[];
 }) => {
-  return <TableOfContents contents={contents} workshop={workshop} />;
+  return (
+    <section className="m-8">
+      <TableOfContents contents={contents} workshop={workshop} />
+    </section>
+  );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

@@ -20,7 +20,7 @@ export default function Home({ workshops }: { workshops: string[] }) {
           {workshops.map((workshop) => {
             const href = `/${workshop}`;
             return (
-              <Card href={href}>
+              <Card href={href} key={workshop}>
                 <h3 className="font-semibold">{formatTitle(workshop)}</h3>
               </Card>
             );
